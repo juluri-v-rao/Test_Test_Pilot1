@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake</title>
+  <link rel="stylesheet" href="snake.css">
+</head>
+<body>
+  <main class="snake-app">
+    <section class="snake-panel" aria-label="Snake game">
+      <div class="snake-hud">
+        <div>
+          <p class="snake-label">Score</p>
+          <p class="snake-value" id="score">0</p>
+        </div>
+        <button class="snake-button" id="restart-button" type="button">Restart</button>
+      </div>
+
+      <p class="snake-status" id="status">Use arrow keys or WASD to play.</p>
+
+      <div
+        id="board"
+        class="snake-board"
+        role="grid"
+        aria-label="Snake board"
+        aria-live="polite"
+      ></div>
+
+      <div class="snake-controls" aria-label="Touch controls">
+        <button class="snake-control-button" type="button" data-direction="up">Up</button>
+        <div class="snake-controls-row">
+          <button class="snake-control-button" type="button" data-direction="left">Left</button>
+          <button class="snake-control-button" type="button" data-direction="down">Down</button>
+          <button class="snake-control-button" type="button" data-direction="right">Right</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="src/snake-logic.js"></script>
+  <script src="src/snake-page.js"></script>
+</body>
+</html>

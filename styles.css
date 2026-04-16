@@ -159,6 +159,16 @@ body {
   padding: 20px;
 }
 
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.home-grid .home-card {
+  margin-top: 0;
+}
+
 .card-title,
 .card-copy {
   margin: 0;
@@ -251,5 +261,9 @@ body {
 
   .badge {
     justify-self: start;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
   }
 }
