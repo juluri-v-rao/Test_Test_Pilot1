@@ -2,14 +2,15 @@
   color-scheme: light;
   --bg: #f5f1e8;
   --panel: #fffdf8;
-  --grid: #d8cfbf;
   --text: #2d2418;
   --muted: #6c614f;
-  --snake: #2f7d4a;
-  --snake-head: #1f5a33;
-  --food: #c6472d;
   --button: #efe5d3;
   --button-border: #bcae93;
+  --line: #ded4c3;
+  --accent: #2b6a57;
+  --accent-soft: #dcebe5;
+  --warning: #fff3dc;
+  --warning-border: #d3b07a;
 }
 
 * {
@@ -28,30 +29,32 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 32px 20px;
 }
 
 .panel {
-  width: min(100%, 560px);
+  width: min(100%, 760px);
   background: var(--panel);
   border: 1px solid var(--button-border);
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0 12px 30px rgba(45, 36, 24, 0.08);
 }
 
-.hud {
+.hero {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 24px;
 }
 
-.label,
-.value,
+.eyebrow,
+.title,
+.intro,
 .status {
   margin: 0;
 }
 
+.eyebrow,
 .label {
   color: var(--muted);
   font-size: 0.85rem;
@@ -59,89 +62,161 @@ body {
   letter-spacing: 0.08em;
 }
 
-.value {
-  font-size: 2rem;
+.title {
+  margin-top: 6px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.05;
 }
 
-.status {
+.intro {
   margin-top: 12px;
-  min-height: 1.5em;
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+.badge {
+  white-space: nowrap;
+  border: 1px solid var(--button-border);
+  background: var(--button);
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+.form {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.input {
+  width: 100%;
+  appearance: none;
+  border: 1px solid var(--button-border);
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  padding: 12px 14px;
+}
+
+.input:disabled {
+  background: #f5f1e8;
   color: var(--muted);
 }
 
-.board {
-  --board-size: min(78vw, 420px);
-  margin-top: 16px;
-  width: var(--board-size);
-  height: var(--board-size);
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  border: 1px solid var(--button-border);
-  background:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: calc(100% / 16) calc(100% / 16);
-  background-color: #f8f4eb;
+.input-file {
+  padding: 10px 12px;
 }
 
-.cell {
-  border-radius: 2px;
-  margin: 1px;
+.hint {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-.cell.snake {
-  background: var(--snake);
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.cell.head {
-  background: var(--snake-head);
-}
-
-.cell.food {
-  background: var(--food);
-}
-
-.restart-button,
-.control-button {
+.button {
   appearance: none;
   border: 1px solid var(--button-border);
   background: var(--button);
   color: var(--text);
   font: inherit;
-  padding: 10px 14px;
+  padding: 12px 16px;
   cursor: pointer;
 }
 
-.restart-button:hover,
-.control-button:hover {
+.button:hover {
   background: #e6dac4;
 }
 
-.controls {
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button-secondary {
+  background: #f7f4ee;
+}
+
+.notice {
   margin-top: 18px;
-  display: none;
-  gap: 10px;
-  justify-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--warning-border);
+  background: var(--warning);
+  color: #634c28;
 }
 
-.controls-row {
+.status-card {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  background: #fbf8f2;
+  padding: 18px;
+}
+
+.status {
+  min-height: 1.5em;
+}
+
+.progress-shell {
+  margin-top: 14px;
+  height: 12px;
+  border: 1px solid var(--button-border);
+  background: #f1eadb;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #4c907a);
+  transition: width 180ms ease;
+}
+
+.stats {
+  margin: 16px 0 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 72px));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.controls > .control-button {
-  justify-self: center;
-  width: 72px;
+.stat {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
 }
 
-.controls-row .control-button {
-  width: 72px;
+.stat dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stat dd {
+  margin: 8px 0 0;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 720px) {
-  .controls {
+  .hero,
+  .actions,
+  .stats {
+    grid-template-columns: 1fr;
     display: grid;
+  }
+
+  .hero {
+    gap: 18px;
+  }
+
+  .badge {
+    justify-self: start;
   }
 }
