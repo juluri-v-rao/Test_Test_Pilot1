@@ -4,24 +4,26 @@ A small browser app that uploads an `.xlsx` workbook, translates Japanese cell t
 
 ## Run
 
-Open `index.html` directly in your browser.
+Open `index.html` directly in your browser, then use the link to open the dedicated translator page.
 
-For the smoothest experience, publish the branch with GitHub Pages or use any static host. The app also works as a local file if the browser can load the remote library script.
+For the smoothest experience, publish the branch with GitHub Pages or use any static host. The translator page also works as a local file if the browser can load the remote library script.
 
 ## Files
 
-- `index.html`: app markup and external workbook library script
+- `index.html`: landing page with link to the translator
+- `translator.html`: dedicated workbook translator page
 - `styles.css`: minimal page styling
 - `src/main.js`: workbook parsing, translation workflow, and export logic
 
 ## How To Use
 
-1. Open the app.
-2. Paste an OpenAI API key.
-3. Choose an `.xlsx` file.
-4. Leave the translation route as `Japanese -> English`.
-5. Click `Translate workbook`.
-6. When processing finishes, click `Download translated file`.
+1. Open `index.html`.
+2. Click `Open translator page`.
+3. Paste an OpenAI API key.
+4. Choose an `.xlsx` file.
+5. Leave the translation route as `Japanese -> English`.
+6. Click `Translate workbook`.
+7. When processing finishes, click `Download translated file`.
 
 ## Notes
 

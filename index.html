@@ -3,100 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Excel Translator</title>
+  <title>App Launcher</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="app">
-    <section class="panel" aria-label="Excel translation app">
-      <div class="hero">
-        <div>
-          <p class="eyebrow">Spreadsheet Translator</p>
-          <h1 class="title">Japanese Excel to English</h1>
-          <p class="intro">
-            Upload an <code>.xlsx</code> file, translate Japanese cell text with ChatGPT, and download a translated workbook with the original structure preserved.
-          </p>
-        </div>
-        <div class="badge">Japanese -> English only</div>
-      </div>
+    <section class="panel panel-home" aria-label="Application launcher">
+      <p class="eyebrow">Application Launcher</p>
+      <h1 class="title">Excel Translation Tools</h1>
+      <p class="intro">
+        This branch now includes a dedicated workbook translation page instead of placing the entire tool on the homepage.
+      </p>
 
-      <form class="form" id="translator-form">
-        <label class="field">
-          <span class="label">OpenAI API key</span>
-          <input
-            class="input"
-            id="api-key"
-            name="apiKey"
-            type="password"
-            placeholder="sk-..."
-            autocomplete="off"
-            required
-          >
-        </label>
-
-        <label class="field">
-          <span class="label">Translation route</span>
-          <select class="input" id="language-route" disabled>
-            <option>Japanese -> English</option>
-          </select>
-        </label>
-
-        <label class="field">
-          <span class="label">Model</span>
-          <select class="input" id="model">
-            <option value="gpt-5.2" selected>gpt-5.2</option>
-            <option value="gpt-5-mini">gpt-5-mini</option>
-            <option value="gpt-5.2-chat-latest">gpt-5.2-chat-latest</option>
-          </select>
-        </label>
-
-        <label class="field field-file">
-          <span class="label">Excel file</span>
-          <input
-            class="input input-file"
-            id="workbook-file"
-            name="workbook"
-            type="file"
-            accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            required
-          >
-          <span class="hint">Only <code>.xlsx</code> is supported.</span>
-        </label>
-
-        <div class="actions">
-          <button class="button" id="translate-button" type="submit">Translate workbook</button>
-          <button class="button button-secondary" id="download-button" type="button" disabled>Download translated file</button>
-        </div>
-      </form>
-
-      <div class="notice">
-        The API key is used only in your browser and sent directly to OpenAI. For private or company spreadsheets, a server-side proxy is safer than exposing a browser key.
-      </div>
-
-      <section class="status-card" aria-live="polite">
-        <p class="status" id="status">Choose an API key and an .xlsx file to begin.</p>
-        <div class="progress-shell" aria-hidden="true">
-          <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <dl class="stats">
-          <div class="stat">
-            <dt>Sheets</dt>
-            <dd id="sheet-count">0</dd>
-          </div>
-          <div class="stat">
-            <dt>Cells scanned</dt>
-            <dd id="cell-count">0</dd>
-          </div>
-          <div class="stat">
-            <dt>Cells translated</dt>
-            <dd id="translated-count">0</dd>
-          </div>
-        </dl>
+      <section class="home-card">
+        <p class="label">Available app</p>
+        <h2 class="card-title">Japanese Excel to English</h2>
+        <p class="card-copy">
+          Upload an <code>.xlsx</code> file, translate Japanese text with ChatGPT, and export a workbook that keeps the original structure.
+        </p>
+        <a class="button home-link" href="translator.html">Open translator page</a>
       </section>
     </section>
   </main>
-
-  <script src="https://unpkg.com/xlsx-populate@1.21.0/browser/xlsx-populate-no-encryption.min.js"></script>
-  <script src="src/main.js"></script>
 </body>
 </html>
