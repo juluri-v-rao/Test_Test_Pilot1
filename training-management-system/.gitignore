@@ -1,0 +1,15 @@
+node_modules
+dist
+release
+electron
+exports
+/assets
+*.db
+*.db-shm
+*.db-wal
+exports/*.pdf
+exports/*.csv
+exports/*.xls
+exports/*.html
+.env
+dashboard-smoke.png

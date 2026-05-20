@@ -23,7 +23,7 @@ function createInitialState(random = Math.random) {
 
   return {
     gridSize: GRID_SIZE,
-    snake,
+    snake: snake,
     direction: "right",
     pendingDirection: "right",
     food: getRandomFoodPosition(snake, GRID_SIZE, random),
@@ -79,7 +79,7 @@ function stepGame(state, random = Math.random) {
   if (outOfBounds || hitSelf) {
     return {
       ...state,
-      direction,
+      direction: direction,
       isGameOver: true,
       snake: nextSnake,
     };
@@ -87,7 +87,7 @@ function stepGame(state, random = Math.random) {
 
   return {
     ...state,
-    direction,
+    direction: direction,
     snake: nextSnake,
     food: ateFood
       ? getRandomFoodPosition(nextSnake, state.gridSize, random)
@@ -103,7 +103,7 @@ function getRandomFoodPosition(snake, gridSize, random = Math.random) {
     for (let x = 0; x < gridSize; x += 1) {
       const isOccupied = snake.some((segment) => segment.x === x && segment.y === y);
       if (!isOccupied) {
-        openCells.push({ x, y });
+        openCells.push({ x: x, y: y });
       }
     }
   }
@@ -121,8 +121,8 @@ function positionsEqual(a, b) {
 }
 
 window.SnakeLogic = {
-  GRID_SIZE,
-  createInitialState,
-  queueDirection,
-  stepGame,
+  GRID_SIZE: GRID_SIZE,
+  createInitialState: createInitialState,
+  queueDirection: queueDirection,
+  stepGame: stepGame,
 };

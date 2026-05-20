@@ -1,26 +1,45 @@
-# Snake
+# Excel Translator
 
-A minimal classic Snake game built with plain HTML, CSS, and JavaScript.
+A small browser app that uploads an `.xlsx` workbook, translates Japanese cell text to English with the OpenAI API, and exports a translated `.xlsx` while keeping the workbook structure intact.
 
 ## Run
 
-Open `index.html` directly in your browser.
+Open `index.html` directly in your browser, then choose the app you want to open.
 
-If you prefer, you can also serve the folder with any static server, but it is not required.
+For the smoothest experience, publish the branch with GitHub Pages or use any static host. The translator page also works as a local file if the browser can load the remote library script.
 
 ## Files
 
-- `index.html`: game page markup
-- `styles.css`: minimal game styling
-- `src/snake-logic.js`: deterministic game rules
-- `src/main.js`: rendering, input handling, and game loop
+- `index.html`: landing page with links to both apps
+- `snake.html`: dedicated Snake game page
+- `snake.css`: Snake game styling
+- `translator.html`: dedicated workbook translator page
+- `styles.css`: minimal page styling
+- `src/snake-logic.js`: deterministic Snake game logic
+- `src/snake-page.js`: Snake page rendering and input handling
+- `src/main.js`: workbook parsing, translation workflow, and export logic
+
+## How To Use
+
+1. Open `index.html`.
+2. Click either `Open Snake` or `Open Translator`.
+3. For the translator, paste an OpenAI API key.
+4. Choose an `.xlsx` file.
+5. Leave the translation route as `Japanese -> English`.
+6. Click `Translate workbook`.
+7. When processing finishes, click `Download translated file`.
+
+## Notes
+
+- The app translates only string cells that contain Japanese characters.
+- It skips formulas, numbers, booleans, and empty cells.
+- Workbook layout, sheet order, merged cells, and most formatting are preserved by editing the uploaded workbook in place before export.
+- The API key is entered client-side and sent directly to OpenAI, so this version is best for internal or personal use.
 
 ## Manual Verification
 
-- Start the game and confirm the snake moves one grid cell per tick.
-- Use arrow keys or `W`, `A`, `S`, `D` to change direction.
-- Confirm the snake grows by one segment and the score increments after eating food.
-- Confirm food never appears on the snake body.
-- Confirm wall collision or self-collision ends the game.
-- Confirm `Restart` resets the score, snake, direction, and food.
-- On small screens, confirm the on-screen buttons control the snake.
+- Upload a workbook with Japanese text, formulas, numbers, and empty cells.
+- Confirm only Japanese text cells are translated.
+- Confirm formulas and non-text cells are unchanged.
+- Confirm sheet order and workbook styling remain intact after download.
+- Confirm the downloaded file opens in Excel with the same worksheet structure.

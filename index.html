@@ -3,42 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake</title>
+  <title>App Launcher</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="app">
-    <section class="panel" aria-label="Snake game">
-      <div class="hud">
-        <div>
-          <p class="label">Score</p>
-          <p class="value" id="score">0</p>
-        </div>
-        <button class="restart-button" id="restart-button" type="button">Restart</button>
-      </div>
+    <section class="panel panel-home" aria-label="Application launcher">
+      <p class="eyebrow">Application Launcher</p>
+      <h1 class="title">Project Apps</h1>
+      <p class="intro">
+        Use this page as the entry point for both applications in the repo: the classic Snake game and the Japanese Excel translator.
+      </p>
 
-      <p class="status" id="status">Use arrow keys or WASD to play.</p>
+      <div class="home-grid">
+        <section class="home-card">
+          <p class="label">Game</p>
+          <h2 class="card-title">Classic Snake</h2>
+          <p class="card-copy">
+            Play the classic Snake loop with keyboard controls, score tracking, food growth, game-over, and restart.
+          </p>
+          <a class="button home-link" href="snake.html">Open Snake</a>
+        </section>
 
-      <div
-        id="board"
-        class="board"
-        role="grid"
-        aria-label="Snake board"
-        aria-live="polite"
-      ></div>
-
-      <div class="controls" aria-label="Touch controls">
-        <button class="control-button" type="button" data-direction="up">Up</button>
-        <div class="controls-row">
-          <button class="control-button" type="button" data-direction="left">Left</button>
-          <button class="control-button" type="button" data-direction="down">Down</button>
-          <button class="control-button" type="button" data-direction="right">Right</button>
-        </div>
+        <section class="home-card">
+          <p class="label">Utility</p>
+          <h2 class="card-title">Japanese Excel Translator</h2>
+          <p class="card-copy">
+            Upload an <code>.xlsx</code> file, translate Japanese text with ChatGPT, and export a workbook that keeps the original structure.
+          </p>
+          <a class="button home-link" href="translator.html">Open Translator</a>
+        </section>
       </div>
     </section>
   </main>
-
-  <script src="src/snake-logic.js"></script>
-  <script src="src/main.js"></script>
 </body>
 </html>
